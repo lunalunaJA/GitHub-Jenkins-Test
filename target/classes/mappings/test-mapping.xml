@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="Board">
+
+
+
+<select id="Select" resultType="com.spring.board.test.TestVo">
+	<![CDATA[
+		select * from board
+	]]>
+</select>
+
+
+<insert id="Insert" parameterType="com.spring.board.test.TestVo">
+ <![CDATA[
+ 	insert into board values(#{img})
+ ]]>
+</insert>
+
+
+
+</mapper>

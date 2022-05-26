@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0 //EN" 
+                               "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.spring.board.test.TestVo" alias="TestVo" /> <!-- 전체 -->
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappings/test-mapping.xml" />
+	
+	</mappers>	
+
+</configuration>
