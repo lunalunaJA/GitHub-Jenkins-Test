@@ -3,18 +3,15 @@ package com.spring.board.presentation;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,11 +88,14 @@ public class TestController {
 	}
 	
 	@RequestMapping("download.do")
-	public void download(TestVo vo, HttpServletRequest request, HttpServletResponse response, String fileName) throws Exception {
+	public void download(TestVo vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//path 설정
  		String path = request.getSession().getServletContext().getRealPath("/files/");
  		System.out.println(path);
- 		 		
+ 		
+ 		//파일명 받아오기
+ 		String fileName = request.getParameter("fileName");
+ 		
  		//새창 띄우기
  		try {
  			String browser = request.getHeader("User-Agent"); 
@@ -116,7 +116,11 @@ public class TestController {
  		String realPath = path + fileName;
         System.out.println(realPath);
         File downFile = new File(realPath);
-                 
+        
+        if (!downFile.exists()) {
+            return ;
+        }
+         
         //파일명 지정        
         response.setContentType("application/octer-stream");
         response.setHeader("Content-Transfer-Encoding", "binary;");
