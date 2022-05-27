@@ -20,5 +20,15 @@ public class TestServiceImpl implements TestService {
 	public void insert(TestVo vo) {
 		dao.insert(vo);
 	}
+
+	@Override
+	public void delete(TestVo vo) {
+		dao.delete(vo);
+	}
+
+	@Override
+	public TestVo content(TestVo vo) {
+		return dao.content(vo);
+	}
 	
 }

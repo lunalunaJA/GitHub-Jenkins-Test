@@ -7,19 +7,29 @@
 
 
 
-<select id="Select" resultType="com.spring.board.test.TestVo">
+<select id="Select" resultType="TestVo">
 	<![CDATA[
 		select * from board
 	]]>
 </select>
 
+<select id="Content" resultType="TestVo">
+	<![CDATA[
+		select * from board where img=#{img}
+	]]>
+</select>
 
-<insert id="Insert" parameterType="com.spring.board.test.TestVo">
+
+<insert id="Insert" parameterType="TestVo">
  <![CDATA[
  	insert into board values(#{img})
  ]]>
 </insert>
 
-
+<delete id="Delete" parameterType="TestVo">
+	<![CDATA[
+		delete from board where img=#{img}
+	]]>
+</delete>
 
 </mapper>

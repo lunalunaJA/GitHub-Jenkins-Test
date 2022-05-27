@@ -21,4 +21,14 @@ public class TestDaoImpl implements TestDao{
 	public void insert(TestVo vo) {
 		mybatis.insert("Board.Insert", vo);
 	}
+
+	@Override
+	public void delete(TestVo vo) {
+		mybatis.delete("Board.Delete", vo);
+	}
+
+	@Override
+	public TestVo content(TestVo vo) {
+		return mybatis.selectOne("Board.Content", vo);
+	}
 }
